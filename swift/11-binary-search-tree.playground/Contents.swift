@@ -74,9 +74,13 @@ class BinarySearchTree<T: Comparable & CustomStringConvertible>
     
     // DELETE (part 2)
     func removeValue(sValue: T) {
-        // rootNode = removeNode(rNode: rootNode, value: sValue)
+        rootNode = removeNode(rNode: rootNode, value: sValue)
     }
     
+    private func removeNode(rNode: BTNode<T>?, value : T) -> BTNode<T>? {
+        guard let node = rNode else {
+            return nil
+        }
 }
 
 // DELETE (part 1)
