@@ -59,3 +59,29 @@ function findTriplets(c_arr, targetSum) {
 const c_arr = [1, 2, 3, 4, 5, 6];
 const targetSum = 10;
 findTriplets(c_arr, targetSum);
+
+// O(log n) logarithmic time - Binary Search
+function binarySearch(sortedArr, target) {
+    let left = 0;
+    let right = sortedArr.length - 1;
+
+    // The key to identifying logarithmic time:
+    // The problem size is halved in each step
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+
+        if (sortedArr[mid] === target) {
+            return mid; // Target found at index mid
+        } else if (sortedArr[mid] < target) {
+            left = mid + 1; // Search in the right half
+        } else {
+            right = mid - 1; // Search in the left half
+        }
+    }
+    return -1; // Target not found
+}
+
+const sortedArr = [1, 3, 5, 7, 9, 11];
+const targetValue = 7;
+const result = binarySearch(sortedArr, targetValue);
+console.log("Logarithmic time (O(log n)) example - Binary search result:", result !== -1 ? `Found at index ${result}` : "Not found");
