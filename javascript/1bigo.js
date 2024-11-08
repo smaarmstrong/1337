@@ -85,3 +85,31 @@ const sortedArr = [1, 3, 5, 7, 9, 11];
 const targetValue = 7;
 const result = binarySearch(sortedArr, targetValue);
 console.log("Logarithmic time (O(log n)) example - Binary search result:", result !== -1 ? `Found at index ${result}` : "Not found");
+
+// coefficient rule
+// f(n) = n
+function coef_n(n) {
+    var count = 0;             // Initialize count to 0
+    for (var i = 0; i < n; i++) { // Loop runs 'n' times
+        count += 1;             // Increment count by 1 on each iteration
+    }
+    return count;               // Return the final count
+}
+
+// f(n) = 5n
+function coef_5n(n) {
+    var count = 0;
+    for (var i = 0; i < n; i++) {
+        count += 5; // Increment count by 5 on each iteration
+    }
+    return count;
+}
+
+// f(n) = n + 1
+function coef_n_plus_1(n) {
+    var count = 0;
+    for (var i = 0; i < n; i++) {
+        count += 1; // Increment count by 1 on each iteration
+    }
+    return count + 1;
+}
