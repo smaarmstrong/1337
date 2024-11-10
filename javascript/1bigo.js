@@ -113,3 +113,19 @@ function coef_n_plus_1(n) {
     }
     return count + 1;
 }
+
+// apply the sum rule on functions to apply the coefficient rule
+function pre_summed(n) {
+    var count = 0;
+    for (var i = 0; i < n; i++) {
+        count += 1;
+    }
+    for (var i = 0; i < 2 * n; i++) {
+        count += 1;
+    }
+    return count;
+}
+// the first for-loop is f(n) = n, 
+// whereas the second is f(n) = 2n
+// sum rule: f(n) = 3n
+// coefficient rule: f(n) = n
