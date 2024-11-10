@@ -1,13 +1,13 @@
-name = "hello_aiken/smaarmstrong"
+name = "smaarmstrong/hello_aiken"
 version = "0.0.0"
 compiler = "v1.1.5"
 plutus = "v3"
 license = "Apache-2.0"
-description = "Aiken contracts for project 'hello_aiken/smaarmstrong'"
+description = "Aiken contracts for project 'smaarmstrong/hello_aiken'"
 
 [repository]
-user = "hello_aiken"
-project = "smaarmstrong"
+user = "smaarmstrong"
+project = "hello_aiken"
 platform = "github"
 
 [[dependencies]]
