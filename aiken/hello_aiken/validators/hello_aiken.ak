@@ -1,6 +1,7 @@
 // validators/hello_world.ak
 use aiken/collection/list
 use aiken/crypto.{VerificationKeyHash}
+use aiken/primitive/string
 use cardano/transaction.{OutputReference, Transaction}
 
 // Define the Datum type, which will store the owner's verification key hash.
@@ -31,6 +32,11 @@ validator hello_world {
     // Output reference, unused here.
     self: Transaction,
   ) {
+    // We've added a manual message using the trace keyword.
+    // The message is the one passed as redeemer.
+    // With this, we can check that the value seen by the validator is the expected one.
+    trace @"redeemer": string.from_bytearray(redeemer.msg)
+
     // The transaction context.
     // Expect the datum to contain an owner, extracting the verification key hash.
     expect Some(Datum { owner }) = datum
