@@ -50,7 +50,11 @@ validator hello_world {
     // Only allow spending if both conditions are met:
     // 1. The message in the redeemer is "Hello, World!".
     // 2. The transaction is signed by the owner.
-    must_say_hello && must_be_signed
+    // 3. The ? is what we call the trace-if-false operator.
+    // This operator will trace the expression it is attached to only if it evaluates to False.
+    // This encourages an approach where validators are built as a conjunction or disjunction of requirements.
+    // On unsuccessful executions, all the invalidated requirements will leave a trace!
+    must_say_hello && must_be_signed?
   }
 
   else(_) {
