@@ -61,6 +61,7 @@ validator hello_world {
     fail
   }
 }
+
 // This validator is rudimentary but demonstrates key concepts:
 // - It checks for a verification key hash (owner) in the datum and a message (msg) 
 //   in the redeemer.
@@ -73,3 +74,22 @@ validator hello_world {
 // 
 // With these conditions, we’ve set up a basic contract requiring a specific
 // signature and message to validate transactions.
+
+test hello_world_example() {
+  let datum =
+    Datum { owner: #"00000000000000000000000000000000000000000000000000000000" }
+  // helps pass
+  let redeemer = Redeemer { msg: "Hello, World!" }
+  // failing test
+  // let redeemer = Redeemer { msg: "Aiken Rocks!" }
+  let placeholder_utxo = OutputReference { transaction_id: "", output_index: 0 }
+  hello_world.spend(
+    Some(datum),
+    redeemer,
+    placeholder_utxo,
+    // replace this
+    // transaction.placeholder,
+    // add this test to pass
+    Transaction { ..transaction.placeholder, extra_signatories: [datum.owner] },
+  )
+}
