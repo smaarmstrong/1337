@@ -129,3 +129,18 @@ function pre_summed(n) {
 // whereas the second is f(n) = 2n
 // sum rule: f(n) = 3n
 // coefficient rule: f(n) = n
+
+// polynomial rule
+// if f(n) is a polynomial of degree k,
+// then f(n) is O(n^(k))
+function poly(n) {
+    var count = 0;
+    for (var i=0; i < n * n; i++) {
+        count += 1;
+    }
+    return count;
+}
+
+// n*n means k = 2 (2nd power)
+// polynomial rule: f(n) = n^(k) 
+// therefore f(n) = n^(2)
