@@ -76,20 +76,21 @@ validator hello_world {
 // signature and message to validate transactions.
 
 test hello_world_example() {
+  // Define the owner in the datum, initializing with a placeholder hex address
   let datum =
     Datum { owner: #"00000000000000000000000000000000000000000000000000000000" }
-  // helps pass
+  // Set redeemer message to pass the `must_say_hello` check
   let redeemer = Redeemer { msg: "Hello, World!" }
-  // failing test
-  // let redeemer = Redeemer { msg: "Aiken Rocks!" }
+
+  // Placeholder UTXO for testing without an actual transaction
   let placeholder_utxo = OutputReference { transaction_id: "", output_index: 0 }
+
+  // Invoke the validator with additional signatories for `must_be_signed` check
   hello_world.spend(
     Some(datum),
     redeemer,
     placeholder_utxo,
-    // replace this
-    // transaction.placeholder,
-    // add this test to pass
+    // Use the `Transaction` structure with owner's key in `extra_signatories`
     Transaction { ..transaction.placeholder, extra_signatories: [datum.owner] },
   )
 }
