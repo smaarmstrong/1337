@@ -77,10 +77,37 @@ class BinarySearchTree<T: Comparable & CustomStringConvertible>
         rootNode = removeNode(rNode: rootNode, value: sValue)
     }
     
-    private func removeNode(rNode: BTNode<T>?, value : T) -> BTNode<T>? {
+    private func removeNode(rNode: BTNode<T>?, value: T) -> BTNode<T>? {
         guard let node = rNode else {
-            return nil
+            return nil // The node does not exist
         }
+        
+        if value < node.value {
+            // Search in the left subtree
+            node.leftChild = removeNode(rNode: node.leftChild, value: value)
+        } else if value > node.value {
+            // Search in the right subtree
+            node.rightChild = removeNode(rNode: node.rightChild, value: value)
+        } else {
+            // Node to be deleted found
+            if node.leftChild == nil {
+                // Case 1: No left child
+                return node.rightChild
+            } else if node.rightChild == nil {
+                // Case 2: No right child
+                return node.leftChild
+            }
+            
+            // Case 3: Two children
+            // Replace the value of the node with the smallest value in the right subtree
+            let minNode = node.rightChild?.min
+            node.value = minNode!.value
+            // Remove the duplicate node from the right subtree
+            node.rightChild = removeNode(rNode: node.rightChild, value: minNode!.value)
+        }
+        
+        return node
+    }
 }
 
 // DELETE (part 1)
