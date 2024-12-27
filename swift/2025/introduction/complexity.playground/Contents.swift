@@ -30,4 +30,4 @@ func checkFirstName(names: [String]) {
   }
 }
 
-
+// keep working on the above cards before doing anything else.
