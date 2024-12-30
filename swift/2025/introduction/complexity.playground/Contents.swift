@@ -1,8 +1,7 @@
 import Foundation
 
 // for studying this, do anki deck first.
-// then add one example with associated key words and definitions.
-// add an anki card to go with it.
+// then add one code example with associated key words and definitions.
 
 // anki card 1
 // what is time complexity?
@@ -17,17 +16,9 @@ import Foundation
 // constant time because it has the same running time regardless of input.
 
 // anki card 4
-// demonstrate constant time with a function like this:
-// 1. a function that takes an array of strings named 'names' for an argument
-// 2. has an if-else sequence
-// 2a. if constant 'first' equals the first element of names print the first element.
-// 2b. else print 'no first name'
+// demonstrate constant time with a function
 func checkFirstName(names: [String]) {
-  if let first = names.first {
-    print(first)
-  } else {
-    print("no first name")
-  }
+  print(names.first ?? "no first name")
 }
 
 // keep working on the above cards before doing anything else.
