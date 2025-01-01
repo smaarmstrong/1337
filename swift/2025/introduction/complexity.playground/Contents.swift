@@ -74,3 +74,9 @@ func printQuadraticNames(names: [String]) {
 // sean
 // alicia
 // gemma
+
+// anki card 12
+// No matter how poorly optimized an O(n) algorithm is,
+// it always performs better than an O(n^2) algorithm.
+// True or False?
+// True.
