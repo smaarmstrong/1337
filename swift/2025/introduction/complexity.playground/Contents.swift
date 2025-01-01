@@ -44,3 +44,33 @@ func printTheNames(theNames: [String]) {
 }
 
 // keep working on the above cards before doing anything else.
+
+// anki card 9
+// what is O(n^2) also known as?
+// quadratic time.
+
+// anki card 10
+// why is it called quadratic time?
+// as data increases,
+// time to run increase proportionally
+// to squares of the input size.
+
+
+// anki card 11
+// demonstrate quadratic time with a function and include sample output
+func printQuadraticNames(names: [String]) {
+  for _ in names {
+    for name in names {
+      print(name)
+    }
+  }
+}
+// sean
+// alicia
+// gemma
+// sean
+// alicia
+// gemma
+// sean
+// alicia
+// gemma
