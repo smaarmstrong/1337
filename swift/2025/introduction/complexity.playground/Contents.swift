@@ -51,10 +51,9 @@ func printTheNames(theNames: [String]) {
 
 // anki card 10
 // why is it called quadratic time?
-// as data increases,
-// time to run increase proportionally
-// to squares of the input size.
-
+// as input increases,
+// time to run increases
+// by input squared.
 
 // anki card 11
 // demonstrate quadratic time with a function and include sample output
@@ -65,6 +64,7 @@ func printQuadraticNames(names: [String]) {
     }
   }
 }
+
 // sean
 // alicia
 // gemma
@@ -80,3 +80,58 @@ func printQuadraticNames(names: [String]) {
 // it always performs better than an O(n^2) algorithm.
 // True or False?
 // True.
+
+// keep working on the above cards before doing anything else.
+
+// anki card 13
+// what is O(log n) also known as?
+// logarithmic time.
+
+// anki card 14
+// why is it called logarithmic time?
+// as input increases, the time to execute the algorithm
+// increases at a slow, logarithmic proportional rate.
+
+// anki card 15
+// where does O(log n) compare with other algorithms?
+// O(log n) is between O(1) and O(n).
+
+// anki card 16
+// suppose a set of numbers
+// let numbers = [2, 15, 60, 70, 72, 85, 100, 110, 460]
+// check if number 451 exists using linear time
+// and explain how the solution is linear
+func naiveLinearContains(_ value: Int, in array: [Int]) -> Bool {
+  for element in array { // Iterate through every element, checking if any matches the target value.
+    if element == value {
+      return true
+    }
+  }
+  return false
+}
+
+// anki card 17
+// suppose a set of numbers
+// let numbers = [2, 15, 60, 70, 72, 85, 100, 110, 460]
+// check if number 451 exists using logarithmic time
+// and explain how the solution is logarithmic
+func naiveLogContains(_ value: Int, in array: [Int]) -> Bool {
+  guard !array.isEmpty else { return false }
+  let middleIndex = array.count / 2
+  if value <= array[middleIndex] { // Narrow search to the left half if the value is less than or equal to the middle.
+    for index in 0 ... middleIndex {
+      if array[index] == value {
+        return true
+      }
+    }
+  } else { // Otherwise, narrow search to the right half.
+    for index in middleIndex ..< array.count {
+      if array[index] == value {
+        return true
+      }
+    }
+  }
+  return false
+}
+
+// work on the above cards before advancing further
