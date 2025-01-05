@@ -174,24 +174,69 @@ func naiveLogContains(_ value: Int, in array: [Int]) -> Bool {
 // also, mark O(1) 3 times, O(n) 2 times, and O(log n) where they appear.
 func recursiveSum(_ array: [Int]) -> Int {
   // Base case: If the array has 1 or no elements, return its sum directly
-
-  guard array.count > 1 else { return array.first ?? 0 } // MARK: O(1)
+  guard array.count > 1 else { return array.first ?? 0 } // O(1)
 
   // Divide the array into two halves
+  let middleIndex = array.count / 2 // O(1)
 
-  let middleIndex = array.count / 2 // MARK: O(1)
-
-  let leftArray = Array(array[..<middleIndex]) // MARK: O(n) (creating subarrays takes O(n) over all levels)
-
-  let rightArray = Array(array[middleIndex...]) // MARK: O(n)
+  let leftArray = Array(array[..<middleIndex]) // O(n)
+  let rightArray = Array(array[middleIndex...]) // O(n)
 
   // Recursively sum the left and right halves
+  let leftSum = recursiveSum(leftArray) // O(log n)
+  let rightSum = recursiveSum(rightArray) // O(log n)
 
-  let leftSum = recursiveSum(leftArray) // MARK: O(log n) (recursion depth)
-
-  let rightSum = recursiveSum(rightArray) // MARK: O(log n) (recursion depth)
-
-  // Combine the results (O(1) operation for addition)
-
-  return leftSum + rightSum // MARK: O(1)
+  // Combine the results
+  return leftSum + rightSum // O(1)
 }
+
+// anki card 27
+// What is space complexity?
+// Space complexity measures the memory needed to run an algorithm.
+
+// anki card 28
+// What does the reserved key word guard signify?
+// guard lets you do early exits from functions and loops
+
+// anki card 29
+// Given this function:
+
+func printSorted(_ array: [Int]) {
+  let sorted = array.sorted()
+  for element in sorted {
+    print(element)
+  }
+}
+
+// How can we optimize the space complexity from O(n) to O(1)? Demonstrate an example below.
+
+func optimizedPrintSorted(_ array: [Int]) {
+  guard !array.isEmpty else { return }
+  var currentCount = 0
+  var minValue = Int.min
+  for value in array {
+    if value == minValue {
+      print(value)
+      currentCount += 1
+    }
+  }
+  while currentCount < array.count {
+    var currentValue = array.max()!
+    for value in array {
+      if value < currentValue, value > minValue {
+        currentValue = value
+      }
+    }
+
+    for value in array {
+      if value == currentValue {
+        print(value)
+        currentCount += 1
+      }
+    }
+
+    minValue = currentValue
+  }
+}
+
+// work on the above cards before advancing further
