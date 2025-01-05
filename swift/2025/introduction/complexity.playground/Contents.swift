@@ -246,8 +246,9 @@ func optimizedPrintSorted(_ array: [Int]) {
       currentCount += 1
     }
   }
+  
+  // 4
   while currentCount < array.count {
-    // 4
     var currentValue = array.max()!
     for value in array {
       if value < currentValue, value > minValue {
