@@ -195,12 +195,7 @@ func recursiveSum(_ array: [Int]) -> Int {
 // Space complexity measures the memory needed to run an algorithm.
 
 // anki card 28
-// What does the reserved key word guard signify?
-// guard lets you do early exits from functions and loops
-
-// anki card 29
-// Given this function:
-
+// Write a function with space complexity of O(n).
 func printSorted(_ array: [Int]) {
   let sorted = array.sorted()
   for element in sorted {
@@ -208,12 +203,43 @@ func printSorted(_ array: [Int]) {
   }
 }
 
+// anki card 29
+// What does the reserved key word guard signify?
+// guard lets you do early exits from functions and loops
+
+// anki card 30
+// Given this function:
+
+// func printSorted(_ array: [Int]) {
+//  let sorted = array.sorted()
+//  for element in sorted {
+//    print(element)
+//  }
+// }
+
 // How can we optimize the space complexity from O(n) to O(1)? Demonstrate an example below.
 
+// 1. Check for the case if the array is empty. If it is, there’s nothing to print.
+//
+// 2. currentCount keeps track of the number of print statements made. minValue stores the last printed value.
+//
+// 3. The algorithm begins by printing out all values matching the minValue, and updates the currentCount according to the number of print statements made.
+//
+// 4. Using the while loop, the algorithm finds the lowest value bigger than minValue and stores it in currentValue.
+//
+// 5. The algorithm then prints all values of currentValue inside the array while updating currentCount.
+//
+// 6. minValue is set to currentValue so the next iteration will try to find the next minimum value.
+
 func optimizedPrintSorted(_ array: [Int]) {
+  // 1
   guard !array.isEmpty else { return }
+
+  // 2
   var currentCount = 0
   var minValue = Int.min
+
+  // 3
   for value in array {
     if value == minValue {
       print(value)
@@ -221,6 +247,7 @@ func optimizedPrintSorted(_ array: [Int]) {
     }
   }
   while currentCount < array.count {
+    // 4
     var currentValue = array.max()!
     for value in array {
       if value < currentValue, value > minValue {
@@ -228,6 +255,7 @@ func optimizedPrintSorted(_ array: [Int]) {
       }
     }
 
+    // 5
     for value in array {
       if value == currentValue {
         print(value)
@@ -235,6 +263,7 @@ func optimizedPrintSorted(_ array: [Int]) {
       }
     }
 
+    // 6
     minValue = currentValue
   }
 }
