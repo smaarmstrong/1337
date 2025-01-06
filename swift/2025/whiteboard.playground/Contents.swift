@@ -1,33 +1,20 @@
 import Foundation
 
-func optimizedPrintSorted(_ array: [Int]) {
-  guard !array.isEmpty else { return }
-  
-  var currentCount: Int = 0
-  var minValue: Int = Int.min
-  
-  for value in array {
-    if value == minValue {
+func demoQuadratic(array: [Int]) {
+  for _ in array {
+    for value in array {
       print(value)
-      currentCount += 1
     }
-  }
-  
-  while currentCount < array.count {
-    var currentValue = array.max()!
-    for value in array {
-      if value < currentValue, value > minValue {
-        currentValue = value
-      }
-    }
-    
-    for value in array {
-      if value == currentValue {
-        print(value)
-        currentCount += 1
-      }
-    }
-    
-    minValue = currentValue
   }
 }
+
+
+// s
+// a
+// g
+// s
+// a
+// g
+// s
+// a
+// g
