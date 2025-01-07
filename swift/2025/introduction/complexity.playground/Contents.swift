@@ -172,21 +172,25 @@ func naiveLogContains(_ value: Int, in array: [Int]) -> Bool {
 // anki card 26
 // demonstrate a quasilinear function through recursive power-of-two summation.
 // also, mark O(1) 3 times, O(n) 2 times, and O(log n) where they appear.
+// 1. If the array has 1 or no elements, return its sum directly
+// 2. Divide the array into two halves
+// 3. Recursively sum the left and right halves
+// 4. Combine the results
 func recursiveSum(_ array: [Int]) -> Int {
-  // Base case: If the array has 1 or no elements, return its sum directly
+  // 1
   guard array.count > 1 else { return array.first ?? 0 } // O(1)
 
-  // Divide the array into two halves
+  // 2
   let middleIndex = array.count / 2 // O(1)
 
   let leftArray = Array(array[..<middleIndex]) // O(n)
   let rightArray = Array(array[middleIndex...]) // O(n)
 
-  // Recursively sum the left and right halves
+  // 3
   let leftSum = recursiveSum(leftArray) // O(log n)
   let rightSum = recursiveSum(rightArray) // O(log n)
 
-  // Combine the results
+  // 4
   return leftSum + rightSum // O(1)
 }
 
@@ -246,7 +250,7 @@ func optimizedPrintSorted(_ array: [Int]) {
       currentCount += 1
     }
   }
-  
+
   // 4
   while currentCount < array.count {
     var currentValue = array.max()!

@@ -1,20 +1,5 @@
-import Foundation
-
-func demoQuadratic(array: [Int]) {
-  for _ in array {
-    for value in array {
-      print(value)
-    }
-  }
+func recursiveSum(_ array: [Int]) -> Int {
+  guard array.count > 1 else { return array.first ?? 0 } // O(1)
+  
+  let middleIndex = array.count / 2 // O(1)
 }
-
-
-// s
-// a
-// g
-// s
-// a
-// g
-// s
-// a
-// g
