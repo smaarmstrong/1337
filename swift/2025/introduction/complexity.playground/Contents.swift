@@ -116,21 +116,21 @@ func naiveLinearContains(_ value: Int, in array: [Int]) -> Bool {
 // check if number 451 exists using logarithmic time
 // and explain how the solution is logarithmic
 func naiveLogContains(_ value: Int, in array: [Int]) -> Bool {
-  guard !array.isEmpty else { return false }
-  let middleIndex = array.count / 2
-  if value <= array[middleIndex] { // Narrow search to the left half if the value is less than or equal to the middle.
-    for index in 0 ... middleIndex {
-      if array[index] == value {
-        return true
-      }
-    }
-  } else { // Otherwise, narrow search to the right half.
-    for index in middleIndex ..< array.count {
-      if array[index] == value {
-        return true
-      }
+  var lowerBound = 0
+  var upperBound = array.count - 1
+
+  while lowerBound <= upperBound {
+    let middleIndex = (lowerBound + upperBound) / 2
+
+    if array[middleIndex] == value {
+      return true
+    } else if array[middleIndex] < value {
+      lowerBound = middleIndex + 1
+    } else {
+      upperBound = middleIndex - 1
     }
   }
+
   return false
 }
 
@@ -210,6 +210,7 @@ func printSorted(_ array: [Int]) {
 // anki card 29
 // What does the reserved key word guard signify?
 // guard lets you do early exits from functions and loops
+// if conditions aren't met.
 
 // anki card 30
 // Given this function:
