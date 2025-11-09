@@ -1,0 +1,3 @@
+in practice gcc is the default and works well with rust on fedora.
+clang is only needed for specific reasons such as cross-compiling to 
+targes where clang's toolchain gives better results.
